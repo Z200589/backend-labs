@@ -4,7 +4,12 @@ feat_flag=0
 fix_flag=0
 
 while read local_ref local_sha remote_ref remote_sha; do
-    new_commits=$(git rev-list ${remote_sha}..${local_sha})
+    if [ "$remote_ref" = "0" ]; then
+        # use prev and current commit as new commits
+        new_commits=$(git rev-list HEAD^..${local_sha})
+    else
+        new_commits=$(git rev-list ${remote_sha}..${local_sha})
+    fi
 
     if [ -n "$new_commits" ]; then
         for commit in $new_commits; do
