@@ -7,7 +7,7 @@ def middle(a, b, c):
 
 def sum_digits(y: int) -> int:
     """
-    Sum all the digits of y.
+    Sum all   the digits of y.
     """
     
     sum = 0
